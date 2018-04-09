@@ -27,7 +27,6 @@ public class GateView extends JPanel implements ActionListener{
 		// caso contr√°rio a interface s√≥ ficar√° consistente depois
 		// da primeira intera√ß√£o do usu√°rio com os campos de texto.
 		// A defini√ß√£o exata do m√©todo update √© dada logo abaixo.
-	
 	    entry0Button = new JCheckBox("Entrada 0");
 	    entry1Button = new JCheckBox("Entrada 1");
 		exitButton = new JCheckBox("SaÌda");
@@ -36,6 +35,7 @@ public class GateView extends JPanel implements ActionListener{
 		add(entry0Button);
 		add(entry1Button);
 		add(exitButton);
+		
 		// Todo painel precisa de um layout, que estabelece como os componentes
 		// s√£o organizados dentro dele. O layout escolhido na linha abaixo √© o
 		// mais simples poss√≠vel: simplesmente enfileira todos eles na HORIZONTAL.
@@ -46,11 +46,11 @@ public class GateView extends JPanel implements ActionListener{
 		// do tipo ActionListener, por isso ele implementa essa interface.
 	    entry0Button.setSelected(false);
 	    entry0Button.addActionListener(this);
-	    
 	    entry1Button.setSelected(false);
 	    entry1Button.addActionListener(this);
 
-	    exitButton.setEnabled(false);
+	    //Estabelece o campo da saÌda como desativado para os checks
+	    exitButton.setEnabled(false); 
 	
 		updatePicture(this.gate);
 	}
@@ -60,9 +60,16 @@ public class GateView extends JPanel implements ActionListener{
 	private void updatePicture(Gate gate) {
 		this.gate = gate;
 		try {
+			
+			//Verifica o tamanho da porta e a partir disso estabelece as conexıes
+			//com as Sources.
 			if(this.gate.size() == 1) {
 				this.gate.connect(0, entry0);
 				entry1Button.setEnabled(false);
+				
+				//Depois de estabelecer as conexıes, lÍ o resultado da porta lÛgica
+				//que est· selecionada na interface e determina se o checkbox da saida
+				// vai estar selecionado ou n„o.
 				if (this.gate.read() == true) {
 					exitButton.setSelected(true);
 				}
@@ -91,7 +98,9 @@ public class GateView extends JPanel implements ActionListener{
 
 	}
 	
-
+	// Toda vez que uma aÁ„o for feita na interface, È preciso verificar
+	// quais as entradas que est„o selecionadas para que as respectivas sources sejam
+	// ativadas.
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JCheckBox entrada = (JCheckBox) e.getSource();

@@ -35,7 +35,7 @@ public class View extends JPanel implements ActionListener {
 		// https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html.
 		menu = new JComboBox<>();
 
-		// Os itens do menu são instâncias de Calculator. O texto exibido para cada
+		// Os itens do menu são instâncias das Portas L�gicas. O texto exibido para cada
 		// item é a String devolvida pelo método toString, por isso demos esse nome.
 		for(Gate gate: model) {
 			menu.addItem(gate);
@@ -65,8 +65,7 @@ public class View extends JPanel implements ActionListener {
 
 
 	// Método exigido pela interface ActionListener, que representa a reação a uma
-	// mudança no menu: remover o subpainel de calculadora que está atualmente neste
-	// painel e adicionar o subpainel correspondente à calculadora selecionada no menu.
+	// mudança no menu.
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		remove(gateView);
