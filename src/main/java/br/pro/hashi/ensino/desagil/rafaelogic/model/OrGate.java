@@ -7,7 +7,9 @@ public class OrGate extends Gate{
 	private NandGate nandGate2;
 	
 	public OrGate(){
-		emitters = new Emitter[2];
+		super("OrGate");
+		this.size = 2;
+		emitters = new Emitter[size];
 		nandGate = new NandGate();
 		nandGate1 = new NandGate();
 		nandGate2 = new NandGate();
@@ -32,5 +34,9 @@ public class OrGate extends Gate{
 		
 		
 		return (nandGate2.read());
+	}
+	@Override
+	public int size() {
+		return this.size;
 	}
 }

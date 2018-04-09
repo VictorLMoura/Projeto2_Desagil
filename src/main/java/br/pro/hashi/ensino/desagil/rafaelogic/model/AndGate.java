@@ -4,9 +4,12 @@ public class AndGate extends Gate{
 	private Emitter[] emitters;
 	private NandGate nandGate;
 	private NandGate nandGate2;
+	private int size;
 
 	public AndGate() {
-		emitters = new Emitter[2];
+		super("AndGate");
+		this.size = 2;
+		emitters = new Emitter[size];
 		nandGate = new NandGate();
 		nandGate2 = new NandGate();
 	}
@@ -29,5 +32,11 @@ public class AndGate extends Gate{
 		nandGate2.connect(1, nandGate);
 		
 		return (nandGate2.read());
+	}
+
+
+	@Override
+	public int size() {
+		return size;
 	}
 }

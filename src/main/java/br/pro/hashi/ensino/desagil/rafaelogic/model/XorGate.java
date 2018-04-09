@@ -8,7 +8,9 @@ public class XorGate extends Gate{
 	private NandGate nandGate3;
 		
 	public XorGate() {
-		emitters = new Emitter[2];
+		super("XorGate");
+		this.size = 2;
+		emitters = new Emitter[size];
 		nandGate = new NandGate();
 		nandGate1 = new NandGate();
 		nandGate2 = new NandGate();
@@ -36,6 +38,10 @@ public class XorGate extends Gate{
 		nandGate3.connect(1, nandGate2);
 		
 		return (nandGate3.read());
+	}
+	@Override
+	public int size() {
+		return this.size;
 	}
 
 }

@@ -5,7 +5,9 @@ public class NotGate extends Gate{
 	private NandGate nandGate;
 	
 	public NotGate(){
-		emitters = new Emitter[2];
+		super("NotGate");
+		this.size = 1;
+		emitters = new Emitter[size];
 		nandGate = new NandGate();
 	}
 
@@ -19,5 +21,9 @@ public class NotGate extends Gate{
 		nandGate.connect(0,  emitters[0]);
 		nandGate.connect(1, emitters[0]);
 		return (nandGate.read());
+	}
+	@Override
+	public int size() {
+		return this.size;
 	}
 }

@@ -4,7 +4,9 @@ public class NandGate extends Gate {
 	private Emitter[] emitters;
 
 	public NandGate() {
-		emitters = new Emitter[2];
+		super("NandGate");
+		this.size = 2;
+		emitters = new Emitter[size];
 	}
 
 	@Override
@@ -15,5 +17,9 @@ public class NandGate extends Gate {
 	@Override
 	public boolean read() {
 		return !(emitters[0].read() && emitters[1].read());
+	}
+	@Override
+	public int size() {
+		return this.size;
 	}
 }
